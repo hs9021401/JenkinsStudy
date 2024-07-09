@@ -8,14 +8,20 @@ pipeline {
         pollSCM 'H/5 * * * *'
     }
     stages {
+        stahe('Setup venv') {
+            steps {
+                sh '''
+                echo "Creating virtual environment..."
+                python3 -m venv /home/jenkins/venv
+                '''
+            }
+        }
         stage('Build') {
             steps {
                 echo "Building.."
                 sh '''
                 cd myapp
-                
-                echo "Creating virtual environment..."
-                python3 -m venv /home/jenkins/venv
+                echo "Entering venv"
                 . /home/jenkins/venv/bin/activate
                 echo "Installing fire package..."
                 pip install -r requirements.txt
