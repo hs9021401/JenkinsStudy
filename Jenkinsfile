@@ -8,7 +8,7 @@ pipeline {
         pollSCM 'H/5 * * * *'
     }
     stages {
-        stahe('Setup venv') {
+        stage('Setup venv') {
             steps {
                 sh '''
                 echo "Creating virtual environment..."
