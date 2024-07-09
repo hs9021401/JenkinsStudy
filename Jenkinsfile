@@ -12,7 +12,9 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                echo "doing build stuff.."
+                cd myapp
+                echo "Installing fire package..."
+                pip install fire==0.4.0
                 '''
             }
         }
@@ -20,7 +22,9 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                echo "doing test stuff.."
+                cd myapp
+                python3 hello.py
+                python3 hello.py --name=Kai
                 '''
             }
         }
