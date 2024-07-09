@@ -10,15 +10,16 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                withEnv(["HOME=${env.WORKSPACE}"]) {
-                    echo "Building.."
-                    sh '''
-                    cd myapp
-                    
-                    echo "Installing fire package..."
-                    pip install -r requirements.txt
-                    '''
-                }
+                echo "Building.."
+                sh '''
+                cd myapp
+                
+                echo "Creating virtual environment..."
+                python3 -m venv /home/jenkins/venv
+                . /home/jenkins/venv/bin/activate
+                echo "Installing fire package..."
+                pip install -r requirements.txt
+                '''
             }
         }
         stage('Test') {
