@@ -26,6 +26,8 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
+                echo "Entering venv"
+                . /home/jenkins/venv/bin/activate
                 cd myapp
                 python3 hello.py
                 python3 hello.py --name=Kai
