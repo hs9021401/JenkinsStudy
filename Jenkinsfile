@@ -14,7 +14,7 @@ pipeline {
                 sh '''
                 cd myapp
                 echo "Installing fire package..."
-                pip install fire==0.4.0
+                pip install -r requirements.txt
                 '''
             }
         }
