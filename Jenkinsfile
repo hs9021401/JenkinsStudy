@@ -40,6 +40,16 @@ pipeline {
                 '''
             }
         }
+        stage('TestSort') {
+            steps {
+                echo "Sort Testing.."
+                sh '''
+                echo "Entering venv"
+                . /home/jenkins/venv/bin/activate                
+                python3 main.py
+                '''
+            }
+        }
         stage('Deliver') {
             steps {
                 echo 'Deliver....'
